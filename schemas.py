@@ -3,7 +3,7 @@ from pydantic import BaseModel
 # Modelo de dados para quando um usuario for se cadastrar
 
 class UsuarioCadastro(BaseModel):
-  usename: str
+  username: str
   email: str
   senha: str
 

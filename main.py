@@ -31,7 +31,7 @@ def home():
 
 
 # 🚀 ROTA 1: Cadastro de usuarios
-@app.post("/cadastro, status_code=status.HTTP_201_CREATED")
+@app.post("/cadastro", status_code=status.HTTP_201_CREATED)
 def cadastrar_usuario(usuario: schemas.UsuarioCadastro):
     conn = database.get_db_connection()
     if not conn:
@@ -53,7 +53,7 @@ def cadastrar_usuario(usuario: schemas.UsuarioCadastro):
 
     try:
         cursor.execute(
-            "INSERT INTO usuarios (usarname, email, senha) VALUES (%s, %s, %s) RETURNING id;",
+            "INSERT INTO usuarios (username, email, senha) VALUES (%s, %s, %s) RETURNING id;",
             (usuario.username, usuario.email, senha_criptografada)
         )
         conn.commit()
@@ -86,7 +86,7 @@ def login_usuario(usuario: schemas.UsuarioLogin):
 
     # 2 se o usuario não existir ou a senha estiver errada, barra a entrada
     if not user or not pwd_context.verify(usuario.senha, user["senha"]):
-        raise HTTPException(status_code="401", detail="Nome de usuário ou senha incorretos")
+        raise HTTPException(status_code=401, detail="Nome de usuário ou senha incorretos")
 
     #. Cria o Token de Acesso Válido por 2horas
     tempo_expiracao = datetime.utcnow() + timedelta(hours=2)

@@ -6,7 +6,7 @@ DB_HOST = "localhost"
 DB_NAME = "lol_client_db"
 DB_USER = "postgres"
 DB_PASS = "Naruto2709" # ⚠️ COLOQUE AQUI A SENHA MASTER QUE VOCE CRIOU NO POSTGRESQL !
-DB_PORT = "54321"
+DB_PORT = "5432"
 
 def get_db_connection():
     """Abre uma nova conexão limpa com o PostgreSQL"""
